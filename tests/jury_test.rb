@@ -28,10 +28,10 @@ class TestJury < Minitest::Test
     assert_kind_of Hash, @jury.cast_votes(@finalists)
   end
   #
-  # def test_cast_votes_hash_includes_two_finalists
-  #   @jury.members = @jury_members
-  #   assert_equal 2, @jury.cast_votes(@finalists).length
-  # end
+  def test_cast_votes_hash_includes_two_finalists
+    @jury.members = @jury_members
+    assert_equal 2, @jury.cast_votes(@finalists).length
+  end
   #
   # def test_cast_votes_every_member_vote_puts_to_terminal
   #   @jury.members = @jury_members
