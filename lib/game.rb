@@ -19,4 +19,14 @@ class Game
   def clear_tribes
   	@tribes.clear
   end
+
+  def merge(merged_tribes)
+  	combined_members = @tribes[0].members + @tribes[1].members
+  	clear_tribes
+    combined_tribe = Tribe.new({name: merged_tribes, members: combined_members})
+  end
+
+  def individual_immunity_challenge
+  	@tribes.sample.members.sample
+  end
 end
