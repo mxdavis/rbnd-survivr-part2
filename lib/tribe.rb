@@ -12,9 +12,9 @@ class Tribe
   end
 
   def tribal_council(options={})
-    vulnerable_members = @members.select { |member| member != options[:immune] }
-    voted_off_member = vulnerable_members.sample
-    @members.delete(voted_off_member)
-    return voted_off_member
+    members_left = @members.select { |member| member != options[:immune] }
+    member_who_was_voted_off = members_left.sample
+    @members.delete(member_who_was_voted_off)
+    return member_who_was_voted_off
   end
  end
