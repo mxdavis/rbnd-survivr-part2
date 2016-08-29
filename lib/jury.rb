@@ -24,4 +24,19 @@ class Jury
     return votes
   end
 
+  def report_votes(final_votes)
+    final_votes.each do | finalist, vote |
+      puts "#{finalist} has a total of #{vote} vote(s)"
+    end
+  end
+
+  def announce_winner(final_votes)
+    final_votes.each do | finalist, vote |
+      if vote >= 4 then
+        puts "#{finalist.name.capitalize} won the game!"
+        return finalist
+      end
+    end
+  end
+
 end
