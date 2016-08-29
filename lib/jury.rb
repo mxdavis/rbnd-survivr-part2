@@ -2,7 +2,7 @@ class Jury
 
   @members = []
 
-  attr_accessor :members, :vote
+  attr_accessor :members
 
   def initialize
     @members = []
@@ -17,8 +17,9 @@ class Jury
     votes = {}
     finalists.each { |finalist| votes[finalist] = 0 }
     @members.each do |member|
-      vote_for = finalists.sample
-      votes[vote_for] += 1
+      vote = finalists.sample
+      puts "#{member} votes for #{vote}!" 
+      votes[vote] += 1
     end
     return votes
   end
