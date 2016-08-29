@@ -32,7 +32,8 @@ end
 def phase_two
   puts "Phase Two"
   3.times do
-    # immune = @borneo.individual_immunity_challenge
+    immune = @borneo.individual_immunity_challenge
+    puts "#{immune} is safe"
 	another_loser = @merge_tribe.tribal_council
 	@merge_tribe.members.delete(another_loser)		
 	puts "#{another_loser}, you are out of the game."	 	
