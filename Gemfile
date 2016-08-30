@@ -1,3 +1,7 @@
-source "https://rubygems.org"
+source 'https://rubygems.org' do
+  gem 'minitest'
+end
 
-gem 'minitest'
+git 'git://github.com/mxdavis/colorizr.git' do
+  gem 'colorizr'
+end

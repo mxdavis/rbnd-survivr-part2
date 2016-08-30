@@ -1,3 +1,4 @@
+require 'colorizr'
 require_relative "game"
 require_relative "tribe"
 require_relative "contestant"
@@ -60,4 +61,5 @@ phase_three #7 elminiations become jury members
 finalists = @merge_tribe.members #set finalists
 vote_results = @jury.cast_votes(finalists) #Jury members report votes
 @jury.report_votes(vote_results) #Jury announces their votes
-@jury.announce_winner(vote_results) #Jury announces final winner
+@jury.announce_winner(vote_results) 
+puts String.create_colors#Jury announces final winner
