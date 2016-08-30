@@ -4,8 +4,8 @@ require_relative "../lib/contestant"
 class Game
   attr_accessor :tribes
 
-  def initialize(tribe1, tribe2)
-  	@tribes = [tribe1, tribe2]
+  def initialize(*tribes)
+  	@tribes = tribes
   end
 
   def add_tribe(tribe)
@@ -21,7 +21,7 @@ class Game
   end
 
   def merge(merged_tribes)
-  	combined_members = @tribes[0].members + @tribes[1].members
+  	combined_members = @tribes.map(&:members).flatten
   	clear_tribes
     add_tribe(Tribe.new({name: merged_tribes, members: combined_members}))
     return @tribes.first

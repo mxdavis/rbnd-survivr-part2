@@ -35,16 +35,18 @@ def phase_two
   3.times do
     immune = @borneo.individual_immunity_challenge
     puts "#{immune} is safe".green
-	another_loser = @merge_tribe.tribal_council
-	@merge_tribe.members.delete(another_loser)		
-	puts "#{another_loser}, you are out of the game.".magenta	 	
+	  another_loser = @merge_tribe.tribal_council(immune: immune)
+	  @merge_tribe.members.delete(another_loser)		
+	  puts "#{another_loser}, you are out of the game.".magenta	 	
   end
 end
 
 def phase_three
   puts "Phase Three".colorize(:red).on_blue
   7.times do
-  	contestant_to_jury = @merge_tribe.tribal_council
+    immune = @borneo.individual_immunity_challenge
+  	contestant_to_jury = @merge_tribe.tribal_council(immune: immune)
+    @merge_tribe.members.delete(contestant_to_jury)
   	puts "#{contestant_to_jury} is now on the jury team".yellow
     @jury.add_member(contestant_to_jury)
   end
