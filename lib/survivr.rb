@@ -1,4 +1,4 @@
-require 'colorizr'
+require 'colorize'
 require_relative "game"
 require_relative "tribe"
 require_relative "contestant"
@@ -21,31 +21,31 @@ require_relative "jury"
 
 #This is where you will write your code for the three phases
 def phase_one
-  puts "Phase One"
+  puts "Phase One".colorize(:red).on_blue
   8.times do
   	the_loosing_team = @borneo.immunity_challenge
   	loser = the_loosing_team.tribal_council
-  	puts "#{the_loosing_team} has lost their teammate #{loser}"
+  	puts "#{the_loosing_team} has lost their teammate #{loser}".red
   	the_loosing_team.members.delete(loser)
   end
 end
 
 def phase_two
-  puts "Phase Two"
+  puts "Phase Two".colorize(:red).on_blue
   3.times do
     immune = @borneo.individual_immunity_challenge
-    puts "#{immune} is safe"
+    puts "#{immune} is safe".green
 	another_loser = @merge_tribe.tribal_council
 	@merge_tribe.members.delete(another_loser)		
-	puts "#{another_loser}, you are out of the game."	 	
+	puts "#{another_loser}, you are out of the game.".magenta	 	
   end
 end
 
 def phase_three
-  puts "Phase Three"
+  puts "Phase Three".colorize(:red).on_blue
   7.times do
   	contestant_to_jury = @merge_tribe.tribal_council
-  	puts "#{contestant_to_jury} is now on the jury team"
+  	puts "#{contestant_to_jury} is now on the jury team".yellow
     @jury.add_member(contestant_to_jury)
   end
 end
@@ -59,7 +59,9 @@ phase_two #3 more eliminations
 @jury = Jury.new
 phase_three #7 elminiations become jury members
 finalists = @merge_tribe.members #set finalists
+puts "Here are the votes:".light_blue
 vote_results = @jury.cast_votes(finalists) #Jury members report votes
+puts "Here come the votes....".blue.on_red.blink
 @jury.report_votes(vote_results) #Jury announces their votes
-@jury.announce_winner(vote_results) 
-puts String.create_colors#Jury announces final winner
+puts "And the final winner is.....".blue.on_red.blink
+@jury.announce_winner(vote_results) #Jury announces final winner
